@@ -1,19 +1,31 @@
-taboola_campaign_performance:
-    constraints:
-        not_null:
-            - id
-            - date_day
-            - campaign_id
-            - spend
-        unique:
-            - id
-        relationships:
-            - {from: campaign_id, to: taboola_campaigns, field: id}
+version: 2
 
-taboola_campaigns:
-    constraints:
-        not_null:
-            - id
-            - start_date
-        unique:
-            - id
+models:
+    
+- name: taboola_campaign_performance
+  description: Base model for taboola campaign performance
+  columns:
+  - name: id
+    tests:
+    - not_null
+    - unique
+  - name: date_day
+    tests:
+    - not_null
+  - name: campaign_id
+    tests:
+    - not_null
+  - name: spend
+    tests:
+    - not_null
+
+- name: taboola_campaigns
+  description: Base model for taboola campaigns 
+  columns:
+  - name: id
+    tests:
+    - not_null
+    - unique
+  - name: start_date
+    tests:
+    - not_null
