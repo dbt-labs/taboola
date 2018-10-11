@@ -22,7 +22,7 @@ joined as (
         campaigns.utm_term
 
     from performance
-    inner join campaigns on performance.campaign_id = campaigns.id
+    left join campaigns on performance.campaign_id = campaigns.id
 
 )
 
