@@ -32,11 +32,11 @@ splits as (
         status,
         spend,
 
-        split_part(split_part(tracking_code,'utm_source=',2), '&', 1) as utm_source,
-        split_part(split_part(tracking_code,'utm_medium=',2), '&', 1) as utm_medium,
-        split_part(split_part(tracking_code,'utm_campaign=',2), '&', 1) as utm_campaign,
-        split_part(split_part(tracking_code,'utm_content=',2), '&', 1) as utm_content,
-        split_part(split_part(tracking_code,'utm_term=',2), '&', 1) as utm_term
+        {{ dbt_utils.get_url_parameter('tracking_code', 'utm_source') }} as utm_source,
+        {{ dbt_utils.get_url_parameter('tracking_code', 'utm_medium') }} as utm_medium,
+        {{ dbt_utils.get_url_parameter('tracking_code', 'utm_campaign') }} as utm_campaign,
+        {{ dbt_utils.get_url_parameter('tracking_code', 'utm_content') }} as utm_content,
+        {{ dbt_utils.get_url_parameter('tracking_code', 'utm_term') }} as utm_term
 
     from base
 
