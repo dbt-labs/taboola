@@ -1,6 +1,6 @@
 select
 
-    md5(date::varchar || campaign_id::varchar) as id,
+    {{ dbt_utils.surrogate_key('date', 'campaign_id') }}::varchar as id,
 
     to_date(date, 'yyyy-mm-dd') as date_day,
     campaign_id,
